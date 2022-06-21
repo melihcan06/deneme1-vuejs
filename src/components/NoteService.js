@@ -3,7 +3,7 @@ import { ref,reactive } from "vue"
 
 const noteApiLink = "http://localhost:8081/note/";
 const notes = ref([]);
-const noteItemJson = reactive({id:1,noteId:1,title:"a",description:"b",content:"c"});
+const noteItemJson = reactive({id:"",noteId:1,title:"",description:"",content:""});
 
 const NoteService = () => {
 
@@ -14,10 +14,9 @@ const NoteService = () => {
     }
 
     const saveNoteItem = () => {
-        debugger;
         axios.post(noteApiLink+'save', noteItemJson);
     }
-    
+
     return{
         getAllNotes,
         saveNoteItem,

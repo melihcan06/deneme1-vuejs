@@ -21,14 +21,12 @@ import noteService from './NoteService.js'
             onMounted(() => {
                 //debugger;    
             })
-            //const {saveNoteItem, noteItemJson} = noteService();
-            const {noteItemJson} = noteService();
+            const {saveNoteItem, noteItemJson, getAllNotes} = noteService();
             return{
                 noteItemJson,
                 saveNote(){
-                    console.log(noteItemJson.value);
-                    console.log(noteItemJson);
-                    //saveNoteItem();
+                    saveNoteItem();
+                    getAllNotes();
                 }
             }
         },
