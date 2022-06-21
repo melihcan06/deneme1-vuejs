@@ -39,8 +39,8 @@ export default{
             noteSelected(idx){
                 //debugger;
                 noteItemJson.value=notes.value[idx];
-                noteItemJson.value.title=noteItemJson.value.noteId+10;
-                noteItemJson.value.noteId=noteItemJson.value.noteId+10;
+                //noteItemJson.value.title=noteItemJson.value.noteId+10;
+                //noteItemJson.value.noteId=noteItemJson.value.noteId+10;
                 console.log(noteItemJson.value);
                 //debugger;
             }

@@ -26,8 +26,10 @@ import noteService from './NoteService.js'
             return{
                 noteItemJson,
                 saveNote(){
-                    noteItemJson.title=noteItemJson.noteId++;
                     console.log(noteItemJson.value);
+                    console.log(noteItemJson);
+                    //noteItemJson.title=noteItemJson.noteId++;
+                    //console.log(noteItemJson.value);
                     //saveNoteItem();
                 }
             }
