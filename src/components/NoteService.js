@@ -1,36 +1,28 @@
-import axios from 'axios'
+import axios from "axios"
+import { ref,reactive } from "vue"
 
-var NoteService = {
+const noteApiLink = "http://localhost:8081/note/";
+const notes = ref([]);
+const noteItemJson = reactive({id:1,noteId:10,title:"",description:"",
+content:""});
 
-    noteLink:"http://localhost:8081/note/",
-    noteItemJson : {
-        id:1,
-        noteId:1,
-        title:"",
-        description:"",
-        content:"",
-    },
+const NoteService = () => {
 
-    async getAllNotes(){
-        let resp = await axios.get(this.noteLink+'list');
-        return resp;
-    },
-
-    setNoteId(){
-        /*var _this=this;
-        this.getAllNotes().then((resp) => {
-            _this.noteId = resp.data[0].noteId;
-        });*/
-        //debugger;
-    },
-
-    saveNoteItem(){
-        axios.post(this.noteLink+'save',this.noteItemJson);
+    const getAllNotes = async () => {
+        await axios.get(noteApiLink+'list').then((resp)=>{
+            notes.value = resp.data;
+        });
     }
 
+    const saveNoteItem = () => {
+        debugger;
+        axios.post(noteApiLink+'save', noteItemJson.value);
+    }
+    return{
+        getAllNotes,
+        saveNoteItem,
+        notes,
+        noteItemJson
+    }
 }
 export default NoteService;
-
-/*getAllNotes();
-setNoteId();
-saveNoteItem();*/

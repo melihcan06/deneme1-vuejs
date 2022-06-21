@@ -1,21 +1,17 @@
 <template>
 <button @click="listNotes">List Notes</button>
 <br><br>
-<!--ul v-for="(note, index) in noteList" :key="index">
-    <li>{{note.id}} {{note.title}} {{note.description}} {{note.content}}</li>
-</ul-->
-
-<table v-if="noteList.length>0">
+<table v-if="notes.length>0">
     <tr>
-        <th>id</th>
+        <!--th>id</th-->
         <th>noteId</th>
         <th>title</th>
         <th>description</th>
         <th>note</th>
         <th>update</th>
     </tr>
-    <tr v-for="(note, index) in noteList" :key="index">
-        <td>{{note.id}}</td>
+    <tr v-for="(note, index) in notes" :key="index">
+        <!--td>{{note.id}}</td-->
         <td>{{note.noteId}}</td>
         <td>{{note.title}}</td>
         <td>{{note.description}}</td>
@@ -28,25 +24,24 @@
 
 
 <script>
-import axios from 'axios'
+import noteService from './NoteService.js'
+
 export default{
     name:'NoteList',
-    data(){
-        return {
-            noteLink:"http://localhost:8081/note/",
-            noteList:[]
-        }
-    },
-    methods:{
-        async listNotes(){
-            let resp = await axios.get(this.noteLink+'list');
-            this.noteList=resp.data;
-            //debugger;
-            return resp;
-        },
-        noteSelected(index){
-            //NoteItem a indexteki elemanin bilgilerini setle
-            console.log(index);
+    setup(){
+        const {getAllNotes, notes} = noteService();
+        const {noteItemJson} = noteService();
+        return {   
+            notes,         
+            async listNotes(){
+                await getAllNotes();
+            },
+            noteSelected(idx){
+                //debugger;
+                noteItemJson.value=notes.value[idx];
+                console.log(noteItemJson.value);
+                //debugger;
+            }
         }
     }
 }
