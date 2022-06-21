@@ -37,12 +37,11 @@ export default{
                 await getAllNotes();
             },
             noteSelected(idx){
-                //debugger;
-                noteItemJson.value=notes.value[idx];
-                //noteItemJson.value.title=noteItemJson.value.noteId+10;
-                //noteItemJson.value.noteId=noteItemJson.value.noteId+10;
-                console.log(noteItemJson.value);
-                //debugger;
+                noteItemJson.id=notes.value[idx].id;
+                noteItemJson.noteId=notes.value[idx].noteId;
+                noteItemJson.title=notes.value[idx].title;
+                noteItemJson.description=notes.value[idx].description;
+                noteItemJson.content=notes.value[idx].content;
             }
         }
     }
