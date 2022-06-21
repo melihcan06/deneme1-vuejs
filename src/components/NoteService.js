@@ -3,8 +3,7 @@ import { ref,reactive } from "vue"
 
 const noteApiLink = "http://localhost:8081/note/";
 const notes = ref([]);
-const noteItemJson = reactive({id:1,noteId:10,title:"",description:"",
-content:""});
+const noteItemJson = reactive({id:1,noteId:1,title:"a",description:"b",content:"c"});
 
 const NoteService = () => {
 

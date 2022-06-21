@@ -29,16 +29,18 @@ import noteService from './NoteService.js'
 export default{
     name:'NoteList',
     setup(){
-        const {getAllNotes, notes} = noteService();
-        const {noteItemJson} = noteService();
+        const {getAllNotes, noteItemJson, notes} = noteService();
         return {   
-            notes,         
+            notes,      
+            noteItemJson,   
             async listNotes(){
                 await getAllNotes();
             },
             noteSelected(idx){
                 //debugger;
                 noteItemJson.value=notes.value[idx];
+                noteItemJson.value.title=noteItemJson.value.noteId+10;
+                noteItemJson.value.noteId=noteItemJson.value.noteId+10;
                 console.log(noteItemJson.value);
                 //debugger;
             }

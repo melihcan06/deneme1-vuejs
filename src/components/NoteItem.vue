@@ -26,16 +26,14 @@ import noteService from './NoteService.js'
             return{
                 noteItemJson,
                 saveNote(){
-                    debugger;
                     noteItemJson.title=noteItemJson.noteId++;
+                    console.log(noteItemJson.value);
                     //saveNoteItem();
                 }
             }
         },
         mounted() {
-             const {noteItemJson} = noteService();
              //debugger;
-             noteItemJson.value;
         }
     }
 </script>
